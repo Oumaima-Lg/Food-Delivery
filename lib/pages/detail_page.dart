@@ -5,7 +5,11 @@ class DetailPage extends StatefulWidget {
   // const DetailPage({super.key});
 
   String image, name, price;
-  DetailPage({required this.image, required this.name, required this.price});
+  DetailPage(
+      {super.key,
+      required this.image,
+      required this.name,
+      required this.price});
 
   @override
   State<DetailPage> createState() => _DetailPageState();
@@ -16,6 +20,7 @@ class _DetailPageState extends State<DetailPage> {
 
   @override
   void initState() {
+    totalprice = int.parse(widget.price);
     super.initState();
   }
 
@@ -62,7 +67,7 @@ class _DetailPageState extends State<DetailPage> {
               style: AppWidget.HeadlineTextFieldStyle(),
             ),
             Text(
-              "\$" + widget.price,
+              "\$${widget.price}",
               style: AppWidget.priceTextFieldStyle(),
             ),
             SizedBox(
@@ -85,18 +90,25 @@ class _DetailPageState extends State<DetailPage> {
             ),
             Row(
               children: [
-                Material(
-                  elevation: 3.0,
-                  borderRadius: BorderRadius.circular(10),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Color(0xffef2b39),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Icon(
-                      Icons.add,
-                      color: Colors.white,
-                      size: 30.0,
+                GestureDetector(
+                  onTap: () {
+                    quantity++;
+                    totalprice += int.parse(widget.price);
+                    setState(() {});
+                  },
+                  child: Material(
+                    elevation: 3.0,
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Color(0xffef2b39),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Icon(
+                        Icons.add,
+                        color: Colors.white,
+                        size: 30.0,
+                      ),
                     ),
                   ),
                 ),
@@ -104,24 +116,33 @@ class _DetailPageState extends State<DetailPage> {
                   width: 20.0,
                 ),
                 Text(
-                  "1",
+                  quantity.toString(),
                   style: AppWidget.boldTextFieldStyle(),
                 ),
                 SizedBox(
                   width: 20.0,
                 ),
-                Material(
-                  elevation: 3.0,
-                  borderRadius: BorderRadius.circular(10),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Color(0xffef2b39),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Icon(
-                      Icons.remove,
-                      color: Colors.white,
-                      size: 30.0,
+                GestureDetector(
+                  onTap: () {
+                    if (quantity > 1) {
+                      quantity--;
+                      totalprice -= int.parse(widget.price);
+                      setState(() {});
+                    }
+                  },
+                  child: Material(
+                    elevation: 3.0,
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Color(0xffef2b39),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Icon(
+                        Icons.remove,
+                        color: Colors.white,
+                        size: 30.0,
+                      ),
                     ),
                   ),
                 ),
@@ -148,7 +169,7 @@ class _DetailPageState extends State<DetailPage> {
                     ),
                     child: Center(
                       child: Text(
-                        "\$50",
+                        "\$$totalprice",
                         style: AppWidget.boldWhiteTextFieldStyle(),
                       ),
                     ),
@@ -183,3 +204,6 @@ class _DetailPageState extends State<DetailPage> {
     );
   }
 }
+
+
+// 2:07;34

@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "D:/S4/DM/Food_Delivery/ff/windows"
+    "cmake.sourceDirectory": "D:/S4/DM/Food_Delivery/ff/windows",
+    "java.configuration.updateBuildConfiguration": "interactive"
 }

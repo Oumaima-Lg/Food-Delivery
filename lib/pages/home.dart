@@ -111,7 +111,7 @@ class _HomeState extends State<Home> {
                 SizedBox(
                   height: 20.0,
                 ),
-                Container(
+                SizedBox(
                   height: 70,
                   child: ListView.builder(
                     shrinkWrap: true,
@@ -212,7 +212,7 @@ class _HomeState extends State<Home> {
             fit: BoxFit.contain,
           ),
           Text(name, style: AppWidget.boldTextFieldStyle()),
-          Text("\$" + price, style: AppWidget.priceTextFieldStyle()),
+          Text("\$$price", style: AppWidget.priceTextFieldStyle()),
           Spacer(), // Occupe tout l'espace disponible entre "Gauche" et "Droite"
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
